@@ -11,19 +11,19 @@
     const password = prompt("진짜 선생님이 맞으신가요??? 본인 확인을 위해 비밀번호를 입력해주세요.");
     if (password !== "020202") {
       alert("비밀번호가 올바르지 않습니다. 입장할 수 없습니다.");
-      window.location.href = "index.html"; // 틀리면 메인 화면으로 추방
+      window.location.href = "index.html"; // 틀리면 처음 화면으로 강제 이동
     }
   })();
 </script>
 
 <style>
   /* 흰색 카드(.card) 내부의 모든 텍스트는 선명하게 읽히도록 어두운 색으로 지정 */
-  .card, .card * {
+  .card, .card *, .card .hint {
     color: #2c3e50 !important;
   }
 
   /* 칠판 배경 위에 직접 들어가는 타이틀과 링크 등은 선명한 흰색 유지 */
-  .back-link, .eyebrow, #pageTitle {
+  body, .back-link, .eyebrow, #pageTitle {
     color: #ffffff !important;
   }
 
@@ -43,14 +43,15 @@
       <div class="card">
         <h2>새로운 퀴즈방 만들기</h2>
         <p class="hint">학생들이 접속하여 실시간으로 풀 수 있는 퀴즈방을 생성합니다.</p>
-        <button class="btn btn-primary" id="createRoomBtn" style="width:100%; margin-top:16px;">방 만들기 (코드 생성)</button>
+        
+        <button class="btn btn-primary" id="createRoomBtn" name="createBtn" style="width:100%; margin-top:16px;">방 만들기 (코드 생성)</button>
       </div>
     </div>
 
     <div id="manageView" style="display:none;">
       <div class="card">
         <p class="hint">접속 코드</p>
-        <h2 id="roomCodeDisplay" style="font-size:32px; letter-spacing:4px; text-align:center; margin:10px 0; color:#3182f6;">------</h2>
+        <h2 id="roomCodeDisplay" class="room-code" style="font-size:32px; letter-spacing:4px; text-align:center; margin:10px 0; color:#3182f6;">------</h2>
         <p class="hint" style="text-align:center;">이 코드를 학생들에게 공유해 주세요.</p>
       </div>
 
