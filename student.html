@@ -3,39 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>퀴즈판 학생용</title>
+<title>학생 화면 | 퀴즈판</title>
 <link rel="stylesheet" href="style.css">
 
 <style>
-  /* 1. [퀴즈 풀기 화면]과 [결과 화면] 내부의 흰색 카드 글씨만 어두운 색(#2c3e50)으로 바꿉니다. */
-  #questionList, #questionList *, 
-  #resultView .card, #resultView .card * {
+  /* 기본적으로 모든 흰색 카드(.card) 내부의 글씨를 어두운 색(#2c3e50)으로 만듭니다. */
+  .card, .card *, 
+  #questionList, #questionList *,
+  #resultDetail, #resultDetail * {
     color: #2c3e50 !important;
   }
 
-  /* 2. [첫 화면 - 방코드 입력 화면]의 겉에 있는 글씨("방 코드", "이름" 라벨 등)는 흰색(#ffffff)으로 유지합니다. */
-  #joinView .card, 
-  #joinView .card label {
-    color: #ffffff !important;
-  }
-
-  /* 3. [입력창] 안의 글씨는 배경이 흰색이므로, 무조건 "검은색(#000000)"으로 나오게 만듭니다. */
-  #joinView input,
-  #roomCodeInput,
-  #studentNameInput {
+  /* 2. [방 코드 입력] 화면과 [문제 풀기] 화면의 입력창(Input Box) 안의 글씨는 사용자가 입력하는 것이 잘 보이도록 선명한 검은색으로 고정합니다. */
+  input {
     color: #000000 !important;
-    background-color: #ffffff !important;
+    background-color: #ffffff !important; /* 배경도 확실히 흰색으로 고정 */
   }
 
-  /* 4. 입력창에 적혀있는 회색 안내 글씨(플레이스홀더)도 선명한 어두운 회색으로 고정합니다. */
-  #joinView input::placeholder,
-  #roomCodeInput::placeholder,
-  #studentNameInput::placeholder {
+  /* 3. 입력창 안에 적혀있는 연한 회색 안내 글씨(플레이스홀더)도 선명한 어두운 회색으로 고정합니다. */
+  input::placeholder {
     color: #7f8c8d !important;
     opacity: 1 !important; /* 브라우저 기본 투명도 초기화 */
   }
 
-  /* 5. [버튼] 안의 글씨는 언제나 선명한 흰색(#ffffff)으로 유지합니다. */
+  /* 4. 단, 파란색 버튼(.btn) 안의 글씨는 흰색으로 유지되어야 잘 보이므로 예외 처리합니다. */
   .btn, .btn * {
     color: #ffffff !important;
   }
