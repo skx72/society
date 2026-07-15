@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>학생 화면 | 퀴즈판</title>
+<title>퀴즈판 학생용</title>
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -13,18 +13,29 @@
     color: #2c3e50 !important;
   }
 
-  /* 2. [첫 화면 - 방코드 입력 화면]의 글씨는 원래대로 선명한 흰색(#ffffff)으로 유지합니다. */
-  #joinView .card, #joinView .card label {
+  /* 2. [첫 화면 - 방코드 입력 화면]의 겉에 있는 글씨("방 코드", "이름" 라벨 등)는 흰색(#ffffff)으로 유지합니다. */
+  #joinView .card, 
+  #joinView .card label {
     color: #ffffff !important;
   }
 
-  /* 3. [입력창] 안의 사용자가 입력하는 글씨는 항상 선명한 검은색(#000000)으로 나오게 합니다. */
-  input, #joinView .card input {
+  /* 3. [입력창] 안의 글씨는 배경이 흰색이므로, 무조건 "검은색(#000000)"으로 나오게 만듭니다. */
+  #joinView input,
+  #roomCodeInput,
+  #studentNameInput {
     color: #000000 !important;
-    background-color: #ffffff !important; /* 배경도 확실히 흰색으로 고정 */
+    background-color: #ffffff !important;
   }
 
-  /* 4. [버튼] 안의 글씨는 언제나 흰색(#ffffff)으로 유지합니다. */
+  /* 4. 입력창에 적혀있는 회색 안내 글씨(플레이스홀더)도 선명한 어두운 회색으로 고정합니다. */
+  #joinView input::placeholder,
+  #roomCodeInput::placeholder,
+  #studentNameInput::placeholder {
+    color: #7f8c8d !important;
+    opacity: 1 !important; /* 브라우저 기본 투명도 초기화 */
+  }
+
+  /* 5. [버튼] 안의 글씨는 언제나 선명한 흰색(#ffffff)으로 유지합니다. */
   .btn, .btn * {
     color: #ffffff !important;
   }
