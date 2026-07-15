@@ -5,6 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>학생 화면 | 퀴즈판</title>
 <link rel="stylesheet" href="style.css">
+
+<style>
+  /* 1. [퀴즈 풀기 화면]과 [결과 화면] 내부의 흰색 카드 글씨만 어두운 색(#2c3e50)으로 바꿉니다. */
+  #questionList, #questionList *, 
+  #resultView .card, #resultView .card * {
+    color: #2c3e50 !important;
+  }
+
+  /* 2. [첫 화면 - 방코드 입력 화면]의 글씨는 원래대로 선명한 흰색(#ffffff)으로 유지합니다. */
+  #joinView .card, #joinView .card label {
+    color: #ffffff !important;
+  }
+
+  /* 3. [입력창] 안의 사용자가 입력하는 글씨는 항상 선명한 검은색(#000000)으로 나오게 합니다. */
+  input, #joinView .card input {
+    color: #000000 !important;
+    background-color: #ffffff !important; /* 배경도 확실히 흰색으로 고정 */
+  }
+
+  /* 4. [버튼] 안의 글씨는 언제나 흰색(#ffffff)으로 유지합니다. */
+  .btn, .btn * {
+    color: #ffffff !important;
+  }
+</style>
 </head>
 <body>
   <div class="wrap">
