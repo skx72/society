@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>선생님 화면 | 퀴즈판</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <a class="back-link" href="index.html">← 처음으로</a>
+    <p class="eyebrow" style="margin-top:16px;">선생님 화면</p>
+    <h1 id="pageTitle">문제 방 만들기</h1>
+    <p class="lead">양식에 맞춰 문제를 적은 txt 파일을 올리면 방 코드가 만들어져요.</p>
+
+    <!-- ===== 방 만들기 화면 ===== -->
+    <div id="createView">
+      <div class="card">
+        <h2>1. 문제 양식 받기</h2>
+        <p class="hint">아래 버튼으로 양식 txt 파일을 내려받아, 메모장 등에서 문제와 답을 채워주세요.</p>
+        <div class="row" style="margin-top:14px;">
+          <button class="btn btn-outline" id="downloadTemplateBtn">📄 양식 txt 다운로드</button>
+        </div>
+        <p class="hint" style="margin-top:16px;"><strong>작성 형식</strong> (번호. 문제 다음 줄에 괄호로 답)</p>
+        <pre style="background:#fff; border:1px dashed var(--line); border-radius:10px; padding:14px 16px; font-size:13px; color:#333; overflow-x:auto;">1.대한민국의 수도는 어디인가요?
+(서울)
+
+2.3 + 4 는 얼마인가요?
+(7)</pre>
+      </div>
+
+      <div class="card">
+        <h2>2. 완성한 txt 올리기</h2>
+        <div class="field">
+          <label for="fileInput">txt 파일 선택</label>
+          <input type="text" id="fileNameShown" placeholder="선택된 파일 없음" readonly style="cursor:pointer;">
+          <input type="file" id="fileInput" accept=".txt" style="display:none;">
+        </div>
+        <div class="divider">— 또는 직접 붙여넣기 —</div>
+        <div class="field">
+          <textarea id="pasteArea" placeholder="1.문제 입력&#10;(답 입력)&#10;&#10;2.문제 입력&#10;(답 입력)"></textarea>
+        </div>
+        <button class="btn btn-outline btn-sm" id="parseBtn">문제 불러오기</button>
+        <div id="parseStatus" class="status-msg"></div>
+        <div id="previewArea" style="margin-top:16px;"></div>
+      </div>
+
+      <div class="card" id="createRoomCard" style="display:none;">
+        <h2>3. 방 만들기</h2>
+        <div class="field">
+          <label for="roomTitle">시험 이름 (선택)</label>
+          <input type="text" id="roomTitle" placeholder="예: 3단원 소단원 쪽지시험">
+        </div>
+        <button class="btn btn-primary" id="createRoomBtn">방 코드 만들기</button>
+        <div id="createStatus" class="status-msg"></div>
+      </div>
+    </div>
+
+    <!-- ===== 대시보드 화면 ===== -->
+    <div id="dashboardView" style="display:none;">
+      <div class="card" style="text-align:center;">
+        <p class="hint" id="dashRoomTitle">시험</p>
+        <div class="room-badge">
+          <span class="label">방 코드</span>
+          <span class="code" id="dashCode">------</span>
+        </div>
+        <p class="hint">이 코드를 학생들에게 알려주세요. 학생은 첫 화면에서 '학생이에요'를 눌러 이 코드를 입력하면 돼요.</p>
+        <button class="btn btn-outline btn-sm" id="newRoomBtn" style="margin-top:10px;">+ 새 방 만들기</button>
+      </div>
+
+      <div class="card">
+        <h2>실시간 채점 결과 <span id="submitCount" style="font-family:'Noto Sans KR'; font-size:14px; color:#6B7A72;"></span></h2>
+        <div id="resultsTableWrap">
+          <div class="empty-state">아직 제출한 학생이 없어요. 학생이 제출하면 여기 자동으로 뜹니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 지난 방 목록 ===== -->
+    <div class="card" id="pastRoomsCard" style="display:none;">
+      <h2>내가 만든 방</h2>
+      <div id="pastRoomsList"></div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/teacher.js"></script>
+</body>
+</html>

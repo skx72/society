@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>학생 화면 | 퀴즈판</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <a class="back-link" href="index.html">← 처음으로</a>
+    <p class="eyebrow" style="margin-top:16px;">학생 화면</p>
+    <h1 id="pageTitle">방 코드로 입장하기</h1>
+
+    <!-- ===== 입장 화면 ===== -->
+    <div id="joinView">
+      <div class="card">
+        <div class="field">
+          <label for="roomCodeInput">방 코드</label>
+          <input type="text" id="roomCodeInput" placeholder="예: 7K3M9P" maxlength="6" style="text-transform:uppercase; letter-spacing:4px; font-size:20px; text-align:center;">
+        </div>
+        <div class="field">
+          <label for="studentNameInput">이름</label>
+          <input type="text" id="studentNameInput" placeholder="이름을 입력해주세요">
+        </div>
+        <button class="btn btn-primary" id="joinBtn">입장하기</button>
+        <div id="joinStatus" class="status-msg"></div>
+      </div>
+    </div>
+
+    <!-- ===== 퀴즈 화면 ===== -->
+    <div id="quizView" style="display:none;">
+      <p class="hint" id="quizRoomTitle" style="color:#D6E5DC;"></p>
+      <div id="questionList"></div>
+      <button class="btn btn-primary" id="submitBtn" style="width:100%;">제출하기</button>
+    </div>
+
+    <!-- ===== 결과 화면 ===== -->
+    <div id="resultView" style="display:none;">
+      <div class="card result-summary">
+        <p class="hint">채점 결과</p>
+        <div class="big-score" id="bigScore">0/0</div>
+        <p class="hint" id="bigPct"></p>
+      </div>
+      <div class="card">
+        <h2>문항별 결과</h2>
+        <div id="resultDetail"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/student.js"></script>
+</body>
+</html>
